@@ -1,1 +1,1 @@
-# ChemLLMathon_ChemNova--I
+# ChemLLMathon_ChemNova_AI
