@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ChemNova AI{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo/logo_without.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <img src="../static/images/logo/logo.png" alt="logo" width="15%">
+            <nav>
+                <a href="{{ url_for('index') }}" class="active">Home</a>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </nav>
+        </header>
+
+        <div class="content">
+            <!-- Sidebar -->
+            <aside>
+                <h3>Today</h3>
+                <ul>
+                    <li>Chemical Structure of H2O</li>
+                </ul>
+                <h3>Previous 7 Days</h3>
+                <ul>
+                    <li>ClO2</li>
+                    <li>2H2O</li>
+                </ul>
+                <button class="upgrade-btn">Upgrade plan</button>
+            </aside>
+
+            <!-- Main Content -->
+            <main>
+                <h1>Formula Input</h1>
+                <div class="input-section">
+                    <input type="text" id="formula-input" placeholder="Enter chemical formula here...">
+                    <button id="generate-btn" onclick="/generate">Generate</button>
+                </div>
+                <h2>Chemical Structure Display</h2>
+                <div id="structure-display">
+                    {% if image_path %}
+                    <img src="{{ url_for('static', filename=image_path) }}" alt="Molecule Image">
+                    {% elif error_message %}
+                    <p style="color: red;">{{ error_message }}</p>
+                    {% else %}
+                    Your structure will appear here.
+                    {% endif %}
+                </div>
+            </main>
+        </div>
+        <footer>
+            Created with ❤️ by ChemNova AI
+        </footer>
+    </div>
+
+
+    <script>
+    // Add event listener to the "Generate" button
+    document.getElementById('generate-btn').addEventListener('click', async () => {
+        const formulaInput = document.getElementById('formula-input').value; // Get the input value
+
+        if (!formulaInput) {
+            alert('Please enter a chemical formula!');
+            return;
+        }
+
+        try {
+            // Send the SMILES input to the Flask endpoint
+            const response = await fetch('/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ smiles: formulaInput }),
+            });
+
+            // Parse the JSON response
+            const data = await response.json();
+
+            if (data.error) {
+                // Display the error message
+                document.getElementById('structure-display').innerHTML = `<p style="color: red;">${data.error}</p>`;
+            } else if (data.image_path) {
+                // Display the generated molecule image
+                document.getElementById('structure-display').innerHTML = `
+                    <img src="/static/${data.image_path}" alt="Molecule Image">
+                `;
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById('structure-display').innerHTML = `
+                <p style="color: red;">An error occurred. Please try again later.</p>
+            `;
+        }
+    });
+    </script>
+</body>
+
+</html>

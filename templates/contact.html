@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ChemNova AI{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo/logo_without.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <img src="../static/images/logo/logo.png" alt="logo" width="15%">
+            <nav>
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('contact') }}" class="active">Contact</a>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <h1>Meet the Founders</h1>
+            <div class="founders-container">
+                <div class="founder-card">
+                    <h2>Renad AlSaleh</h2>
+                    <p>UI/UX</p>
+                    <p><a href="mailto:reenadalsaleh@gmail.com">reenadalsaleh@gmail.com</a></p>
+                    <p><a href="https://www.linkedin.com/in/renad-alsaleh-94ab9721a/">Renad AlSaleh</a></p>
+                </div>
+                <div class="founder-card">
+                    <h2>Fatima Alomir</h2>
+                    <p>Web Developer</p>
+                    <p><a href="mailto:Fa.omair73@gmail.com">Fa.omair73@gmail.com</a></p>
+                    <p><a href="https://www.linkedin.com/in/fatima-alomir-7ba3ab317/">Fatimaalomair</a></p>
+                </div>
+                <div class="founder-card">
+                    <h2>Jana Alanazy</h2>
+                    <p>Documentation</p>
+                    <p><a href="mailto:Janaalanazy@gmail.com">Janaalanazy@gmail.com</a></p>
+                    <p><a href="https://www.linkedin.com/in/jana-alanazy-863a60329/">Jana Alanazy</a></p>
+                </div>
+                <div class="founder-card">
+                    <h2>Rayan Almugrin</h2>
+                    <p>Data Analysis</p>
+                    <p><a href="mailto:Ryan_56@outlook.sa">Ryan_56@outlook.sa</a></p>
+                    <p><a href="https://www.linkedin.com/in/rayan-almugrin-150915247/">ryanalmugrin</a></p>
+                </div>
+                <div class="founder-card">
+                    <h2>Hasan Alzayer</h2>
+                    <p>AI Developer</p>
+                    <p><a href="mailto:hasan.alzayer9@gmail.com">hasan.alzayer9@gmail.com</a></p>
+                    <p><a href="https://www.linkedin.com/in/hasan-alzayer/">Hasan Alzayer</a></p>
+                </div>
+            </div>
+        </main>
+        <footer>
+            Created with ❤️ by ChemNova AI
+        </footer>
+    </div>
+</body>
+
+</html>

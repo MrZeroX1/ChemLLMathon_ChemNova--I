@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ChemNova AI{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo/logo_without.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <img src="../static/images/logo/logo.png" alt="logo" width="15%">
+            <nav>
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('about') }}" class="active">About</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </nav>
+        </header>
+        <!-- Main Content -->
+        <main>
+            <h1>About ChemNova AI</h1>
+            <p>
+                <strong>ChemNova AI</strong> is an innovative, AI-powered tool designed to simplify and enhance the
+                process of creating and exploring chemical structures. Our platform offers an intuitive interface for
+                researchers, educators, and students to easily access chemical structures, ensuring accuracy and
+                efficiency in representing chemical data.
+            </p>
+
+            <p>With <strong>ChemNova AI</strong>, users can:</p>
+            <ul>
+                <li>Instantly generate chemical structures for compounds such as H2O or ClO2.</li>
+                <li>Review recently accessed structures for quick reference.</li>
+                <li>Access a streamlined dashboard for managing and visualizing chemical information.</li>
+            </ul>
+
+            <h2>Vision</h2>
+            <p>To simplify and revolutionize chemical research and education through innovative AI-powered tools.</p>
+
+            <h2>Mission</h2>
+            <p>To provide intuitive and reliable solutions for creating and exploring chemical structures, empowering
+                researchers, educators, and students.</p>
+
+            <h2>Message</h2>
+            <p>ChemNova AI simplifies complex chemistry, making it accessible and efficient for everyone.</p>
+        </main>
+        <footer>
+            Created with ❤️ by ChemNova AI
+        </footer>
+    </div>
+</body>
+
+</html>
